@@ -36,8 +36,8 @@ class User : Fragment() {
         }
         binding.userPassword.setOnFocusChangeListener { v, hasFocus ->
             if (!hasFocus){
-                var imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(binding.userPassword.getWindowToken(), 0)
+                val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(binding.userPassword.windowToken, 0)
             }
         }
         return binding.root
@@ -49,7 +49,6 @@ class User : Fragment() {
         }
         else {
             binding.alertLabel.visibility = View.INVISIBLE
-
             view.findNavController().navigate(UserDirections.actionUserToWelcome(binding.userEmail.text.toString()))
         }
     }
