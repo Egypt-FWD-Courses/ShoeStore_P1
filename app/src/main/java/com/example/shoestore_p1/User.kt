@@ -12,17 +12,29 @@ import com.example.shoestore_p1.databinding.FragmentUserBinding
 
 class User : Fragment() {
 
+    private lateinit var binding: FragmentUserBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         (activity as AppCompatActivity).supportActionBar?.title = "Shoes outlet (Login)"
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
 
-        var binding: FragmentUserBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_user, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_user, container, false)
+        binding.createButton.setOnClickListener {
+            welcomeCheck()
+        }
         return binding.root
     }
+
+    private fun welcomeCheck(){
+        if (binding.userEmail.text.isEmpty() || binding.userPassword.text.isEmpty()){
+            binding.alertLabel.visibility = View.VISIBLE
+        }
+        else {
+            binding.alertLabel.visibility = View.INVISIBLE
+        }
+    }
 }
+
