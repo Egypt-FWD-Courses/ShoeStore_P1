@@ -1,16 +1,20 @@
 package com.example.shoestore_p1
 
+import android.content.Context
 import android.os.Bundle
-import android.text.Layout
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.shoestore_p1.databinding.FragmentUserBinding
+
+
 
 class User : Fragment() {
 
@@ -34,14 +38,17 @@ class User : Fragment() {
     }
 
     private fun welcomeCheck(view: View){
-        if (binding.userEmail.text.isEmpty() || binding.userPassword.text.isEmpty()){
+        if (binding.userEmail.text.isEmpty() || binding.userPassword.text.isEmpty()) {
             binding.alertLabel.visibility = View.VISIBLE
-
         }
         else {
             binding.alertLabel.visibility = View.INVISIBLE
+            binding.userPassword.onEditorAction(EditorInfo.IME_ACTION_DONE)
+            binding.userEmail.onEditorAction(EditorInfo.IME_ACTION_DONE)
             view.findNavController().navigate(UserDirections.actionUserToWelcome(binding.userEmail.text.toString()))
         }
     }
+
+
 }
 
