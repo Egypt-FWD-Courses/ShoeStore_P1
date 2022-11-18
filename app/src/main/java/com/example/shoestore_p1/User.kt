@@ -34,6 +34,12 @@ class User : Fragment() {
         binding.loginButton.setOnClickListener{ view: View ->
             welcomeCheck(view)
         }
+        binding.userPassword.setOnFocusChangeListener { v, hasFocus ->
+            if (!hasFocus){
+                var imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(binding.userPassword.getWindowToken(), 0)
+            }
+        }
         return binding.root
     }
 
@@ -43,8 +49,7 @@ class User : Fragment() {
         }
         else {
             binding.alertLabel.visibility = View.INVISIBLE
-            binding.userPassword.onEditorAction(EditorInfo.IME_ACTION_DONE)
-            binding.userEmail.onEditorAction(EditorInfo.IME_ACTION_DONE)
+
             view.findNavController().navigate(UserDirections.actionUserToWelcome(binding.userEmail.text.toString()))
         }
     }
