@@ -12,4 +12,9 @@
     <string name="welcome">Welcome,</string>
     <string name="logo">Logo</string>
     <string name="explore_instructions">Explore Instructions</string>
+    <string name="instructions">Instructions</string>
+    <string name="instructionOne">1) Press on explore outlet button to go to the next page.</string>
+    <string name="instructionTwo">2) In the next page you are able to see a list of different shoes of different brands and explore the outlet.</string>
+    <string name="instructionThree">3) You can add new shoe by pressing on the + button and fill in all the required files then press on save button to add it to the list or you can press on cancel and return to the outlet page.</string>
+    <string name="instructionsButton">Explore the Outlet</string>
 </resources>

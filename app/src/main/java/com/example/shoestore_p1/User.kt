@@ -19,8 +19,8 @@ import com.example.shoestore_p1.databinding.FragmentUserBinding
 class User : Fragment() {
 
     private lateinit var binding: FragmentUserBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onResume() {
+        super.onResume()
         (activity as AppCompatActivity).supportActionBar?.title = "Shoes outlet (Login)"
     }
 

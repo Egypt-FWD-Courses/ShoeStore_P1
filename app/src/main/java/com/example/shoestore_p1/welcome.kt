@@ -12,8 +12,9 @@ import com.example.shoestore_p1.databinding.FragmentWelcomeBinding
 
 class welcome : Fragment() {
     private lateinit var binding: FragmentWelcomeBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+
+    override fun onResume() {
+        super.onResume()
         (activity as AppCompatActivity).supportActionBar?.title = "Shoes outlet (Welcome)"
     }
 
