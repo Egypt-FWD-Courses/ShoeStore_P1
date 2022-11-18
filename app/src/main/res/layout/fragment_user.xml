@@ -65,18 +65,16 @@
 
         <Button
             android:id="@+id/createButton"
-            android:layout_width="140dp"
-            android:layout_height="50dp"
-            android:layout_marginBottom="140dp"
             android:text="@string/signup"
-            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/loginButton"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            style="@style/buttonStyle" />
 
         <Button
             android:id="@+id/loginButton"
+            style="@style/buttonStyle"
             android:layout_width="140dp"
             android:layout_height="50dp"
             android:layout_marginBottom="140dp"

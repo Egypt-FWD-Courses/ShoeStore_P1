@@ -21,5 +21,13 @@
         <argument
             android:name="email"
             app:argType="string" />
+        <action
+            android:id="@+id/action_welcome_to_instructions"
+            app:destination="@id/instructions" />
     </fragment>
+    <fragment
+        android:id="@+id/instructions"
+        android:name="com.example.shoestore_p1.instructions"
+        android:label="fragment_instructions"
+        tools:layout="@layout/fragment_instructions" />
 </navigation>

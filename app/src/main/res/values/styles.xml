@@ -10,4 +10,11 @@
         <item name="android:textSize">22sp</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="buttonStyle">
+        <item name="android:layout_width">140dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_marginBottom">140dp</item>
+        <item name="android:textSize">20sp</item>
+    </style>
 </resources>
