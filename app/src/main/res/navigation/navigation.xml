@@ -8,5 +8,18 @@
         android:id="@+id/user"
         android:name="com.example.shoestore_p1.User"
         android:label="Login"
-        tools:layout="@layout/fragment_user" />
+        tools:layout="@layout/fragment_user" >
+        <action
+            android:id="@+id/action_user_to_welcome"
+            app:destination="@id/welcome" />
+    </fragment>
+    <fragment
+        android:id="@+id/welcome"
+        android:name="com.example.shoestore_p1.welcome"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" >
+        <argument
+            android:name="email"
+            app:argType="string" />
+    </fragment>
 </navigation>
