@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import com.example.shoestore_p1.databinding.FragmentInstructionsBinding
 
 class instructions : Fragment() {
@@ -23,6 +24,9 @@ class instructions : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_instructions, container, false)
+        binding.insturctionButton.setOnClickListener{ view: View ->
+            view.findNavController().navigate(instructionsDirections.actionInstructionsToOutlet())
+        }
         return binding.root
     }
 
