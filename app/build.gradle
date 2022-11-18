@@ -5,7 +5,9 @@ plugins {
 
 android {
     compileSdk 32
-
+    buildFeatures {
+        dataBinding true
+    }
     defaultConfig {
         applicationId "com.example.shoestore_p1"
         minSdk 22
