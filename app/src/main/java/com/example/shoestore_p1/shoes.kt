@@ -1,6 +1,6 @@
 package com.example.shoestore_p1
 
-class shoes(name: String, company: String, size: String, description: String) {
+class Shoes(name: String, company: String, size: String, description: String) {
     lateinit var name: String
     lateinit var company: String
     lateinit var size: String
