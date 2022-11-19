@@ -37,5 +37,6 @@
     <fragment
         android:id="@+id/outlet"
         android:name="com.example.shoestore_p1.outlet.Outlet"
-        android:label="fragment_outlet" />
+        android:label="fragment_outlet"
+        tools:layout="@layout/fragment_outlet"/>
 </navigation>
