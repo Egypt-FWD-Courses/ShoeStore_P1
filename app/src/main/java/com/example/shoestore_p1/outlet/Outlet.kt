@@ -34,8 +34,7 @@ class Outlet : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this)[OutletViewModel::class.java]
-        Log.i("outlet", "onCreate called")
+
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -44,8 +43,7 @@ class Outlet : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_outlet, container, false)
-        //viewModel = navGraphViewModels<OutletViewModel>(R.id.outlet).value
-        Log.i("outlet", "onCreateView called")
+        viewModel = ViewModelProvider(this)[OutletViewModel::class.java]
         outletView = binding.shoesData
         binding.lifecycleOwner = this
 
