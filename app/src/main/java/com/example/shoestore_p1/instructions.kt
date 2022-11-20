@@ -25,7 +25,7 @@ class instructions : Fragment() {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_instructions, container, false)
         binding.insturctionButton.setOnClickListener{ view: View ->
-            view.findNavController().navigate(instructionsDirections.actionInstructionsToOutlet())
+            view.findNavController().navigate(instructionsDirections.actionInstructionsToOutlet(null,null,null,null))
         }
         return binding.root
     }

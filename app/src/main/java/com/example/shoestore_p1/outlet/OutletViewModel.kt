@@ -35,4 +35,9 @@ class OutletViewModel: ViewModel() {
             _shoesList.value!! += shoe
         }
     }
+
+    fun insertShoe (name: String, size: String, brand: String, description: String){
+        val shoe = Shoes(name, size, brand, description)
+        _shoesList.value!! += shoe
+    }
 }

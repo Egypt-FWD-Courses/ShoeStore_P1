@@ -1,9 +1,10 @@
 package com.example.shoestore_p1.outlet
 
+
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,12 +15,11 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.navGraphViewModels
 import com.example.shoestore_p1.R
 import com.example.shoestore_p1.databinding.FragmentOutletBinding
-import com.example.shoestore_p1.outlet.OutletDirections
 
 
 class Outlet : Fragment() {
@@ -32,15 +32,28 @@ class Outlet : Fragment() {
         (activity as AppCompatActivity).supportActionBar?.title = "Shoes outlet"
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = ViewModelProvider(this)[OutletViewModel::class.java]
+        Log.i("outlet", "onCreate called")
+    }
+
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_outlet, container, false)
-        viewModel = ViewModelProvider(this)[OutletViewModel::class.java]
+        //viewModel = navGraphViewModels<OutletViewModel>(R.id.outlet).value
+        Log.i("outlet", "onCreateView called")
         outletView = binding.shoesData
         binding.lifecycleOwner = this
+
+        val args = OutletArgs.fromBundle(requireArguments())
+
+        if (args.shoeName != null){
+            viewModel.insertShoe(args.shoeName!!, args.shoeSize!!, args.shoeBrand!!, args.shoeDescription!!)
+        }
 
         viewModel.shoesList.observe(viewLifecycleOwner) { shoes ->
             for (i in 0 until shoes.size) {
@@ -52,7 +65,6 @@ class Outlet : Fragment() {
                 }
             }
         }
-
         binding.addButton.setOnClickListener{view:View ->
             view.findNavController().navigate(OutletDirections.actionOutletToAddShoe())
         }
@@ -112,7 +124,6 @@ class Outlet : Fragment() {
         name_size_layout.addView(sizeLabel)
         name_size_layout.addView(sizeValue)
 
-
         // Add the brand label
         val brandLabel = TextView(context)
         brandLabel.text = "Brand:"
@@ -141,7 +152,6 @@ class Outlet : Fragment() {
         descriptionLabel.setTextAppearance(R.style.shoesTitles)
 
         // Add the description value
-        // Add the brand value
         val descriptionValue = TextView(context)
         descriptionValue.text = productDescription
         descriptionValue.setTextAppearance(R.style.shoeDetails)
