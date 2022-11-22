@@ -1,9 +1,11 @@
 package com.example.shoestore_p1.outlet
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.shoestore_p1.Shoes
+import kotlin.math.log
 
 class OutletViewModel: ViewModel() {
 
@@ -12,6 +14,7 @@ class OutletViewModel: ViewModel() {
         get() = _shoesList
 
     init {
+        Log.i("ViewModel", "init")
         insertInitialData()
     }
 

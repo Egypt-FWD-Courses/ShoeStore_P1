@@ -43,12 +43,12 @@ class Outlet : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_outlet, container, false)
-        viewModel = ViewModelProvider(this)[OutletViewModel::class.java]
+
+        viewModel = ViewModelProvider(requireActivity())[OutletViewModel::class.java]
         outletView = binding.shoesData
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
 
         val args = OutletArgs.fromBundle(requireArguments())
-
         if (args.shoeName != null){
             viewModel.insertShoe(args.shoeName!!, args.shoeSize!!, args.shoeBrand!!, args.shoeDescription!!)
         }
