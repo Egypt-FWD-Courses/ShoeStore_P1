@@ -10,16 +10,19 @@
             type="com.example.shoestore_p1.outlet.OutletViewModel" />
     </data>
 
+<!--    Here, I used the constriant layout to fix the floating button to the bottom right
+corner of the screen -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
+<!--Here, I used scroll view to be able to view all the shoes list even when it's too big-->
         <ScrollView
             android:id="@+id/shoesOutlet"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:ignore="SpeakableTextPresentCheck">
-
+<!--Here, I used Linear Layout to set constant margins for all coming shoes and to add
+ all shoe on top of each other vertically-->
             <LinearLayout
                 android:id="@+id/shoesData"
                 android:layout_width="match_parent"

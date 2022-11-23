@@ -4,11 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".instructions">
 
+    <!--Here, I used scroll view to be able to see the whole content on different screen and when the
+screen layout changes-->
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="true">
 
+            <!--        Here, I used constraint view because it will be easier and more efficient to set the
+ distances between the content and to set the buttons to be set as a ratio between the end of the
+ screen and the last Text view -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

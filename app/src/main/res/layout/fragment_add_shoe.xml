@@ -10,11 +10,15 @@
             type="com.example.shoestore_p1.outlet.OutletViewModel" />
     </data>
 
-
+<!--Here, I used scroll view to be able to see the whole content on different screen and when the
+screen layout changes-->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+<!--        Here, I used constraint view because it will be easier and more efficient to set the
+ distances between the content and to set the buttons to be set as a ratio between the end of the
+ screen and the last editText view -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
