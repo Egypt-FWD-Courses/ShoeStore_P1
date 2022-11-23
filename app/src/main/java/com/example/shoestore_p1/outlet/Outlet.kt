@@ -4,20 +4,21 @@ package com.example.shoestore_p1.outlet
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-import androidx.navigation.navGraphViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.shoestore_p1.R
 import com.example.shoestore_p1.databinding.FragmentOutletBinding
 
@@ -44,6 +45,9 @@ class Outlet : Fragment() {
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_outlet, container, false)
 
+        val controller = findNavController()
+        controller.clearBackStack(R.id.login)
+
         viewModel = ViewModelProvider(requireActivity())[OutletViewModel::class.java]
         outletView = binding.shoesData
         binding.lifecycleOwner = viewLifecycleOwner
@@ -66,8 +70,29 @@ class Outlet : Fragment() {
         binding.addButton.setOnClickListener{view:View ->
             view.findNavController().navigate(OutletDirections.actionOutletToAddShoe())
         }
+
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                // Add menu items here
+                menuInflater.inflate(R.menu.logout, menu)
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                when (menuItem.itemId) {
+                    R.id.login -> {
+                        val controller = Navigation.findNavController(requireActivity(), R.id.myNavHostFragment)
+                        controller.navigate(R.id.login)
+                        return true
+                    }
+                }
+                return true
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
         return binding.root
     }
+
+
 
     @RequiresApi(Build.VERSION_CODES.M)
     private fun addLayout(productName: String, productSize: String, productBrand: String, productDescription: String, colored: Boolean = false){
