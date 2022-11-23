@@ -31,6 +31,7 @@ class Outlet : Fragment() {
     override fun onResume() {
         super.onResume()
         (activity as AppCompatActivity).supportActionBar?.title = "Shoes outlet"
+        (activity as AppCompatActivity).supportActionBar?.setDisplayHomeAsUpEnabled(false)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
