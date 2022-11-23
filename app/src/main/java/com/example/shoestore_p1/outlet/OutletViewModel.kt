@@ -21,16 +21,16 @@ class OutletViewModel: ViewModel() {
     private fun insertInitialData () {
         _shoesList.value = mutableListOf()
         val shoesName = mutableListOf(
-            "dummy1", "dummy2", "dummy3", "dummy4", "dummy5"
+            "Air Max 270", "Air Force 1", "Air Zoom", "Blazer Mid", "Air Vapor"
         )
         val shoesCompany = mutableListOf(
-            "Dummy1", "Dummy2", "Dummy3", "Dummy4", "Dummy5"
+            "Nike", "Nike", "Nike", "Nike", "Nike"
         )
         val shoesSize = mutableListOf(
-            "DuMmy1", "DuMmy2", "DuMmy3", "DuMmy4", "DuMmy5"
+            "40", "43", "42", "45", "23"
         )
         val shoesDescription = mutableListOf(
-            "DuMmy1", "DuMmy2", "DuMmy3", "DuMmy4", "DuMmy5"
+            "Cool running shoes", "Casual shoes", "Comfort running shoes", "Casual shoes", "Comfort shoes"
         )
 
         for (i in 0 until shoesName.size){
