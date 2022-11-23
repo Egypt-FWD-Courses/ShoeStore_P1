@@ -4,6 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".outlet.addShoe">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.shoestore_p1.outlet.OutletViewModel" />
+    </data>
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -36,6 +42,7 @@
                 android:importantForAutofill="no"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
+                android:text="@={viewModel.newShoe.name}"
                 android:textColorHint="#757575"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -63,6 +70,7 @@
                 android:hint="Enter the size of the shoes"
                 android:importantForAutofill="no"
                 android:inputType="numberSigned"
+                android:text="@={viewModel.newShoe.size}"
                 android:minHeight="48dp"
                 android:textColorHint="#757575"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -89,6 +97,7 @@
                 android:layout_marginEnd="15dp"
                 android:ems="10"
                 android:hint="Enter the brand name of the shoes"
+                android:text="@={viewModel.newShoe.company}"
                 android:importantForAutofill="no"
                 android:inputType="textPersonName"
                 android:minHeight="48dp"
@@ -118,6 +127,7 @@
                 android:ems="10"
                 android:gravity="start|top"
                 android:hint="Enter the description of the shoe"
+                android:text="@={viewModel.newShoe.description}"
                 android:importantForAutofill="no"
                 android:inputType="textMultiLine"
                 android:minHeight="48dp"

@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.shoestore_p1.R
 import com.example.shoestore_p1.UserDirections
@@ -18,6 +19,7 @@ import com.example.shoestore_p1.databinding.FragmentAddShoeBinding
 class addShoe : Fragment() {
 
     private lateinit var binding: FragmentAddShoeBinding
+    private lateinit var viewModel: OutletViewModel
     override fun onResume() {
         super.onResume()
         (activity as AppCompatActivity).supportActionBar?.title = "Add shoes"
@@ -27,11 +29,14 @@ class addShoe : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        viewModel = ViewModelProvider(requireActivity())[OutletViewModel::class.java]
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_add_shoe, container, false)
 
         binding.cancel.setOnClickListener { view:View ->
-            view.findNavController().navigate(addShoeDirections.actionAddShoeToOutlet(null, null, null, null))
+            view.findNavController().navigate(addShoeDirections.actionAddShoeToOutlet())
         }
+        binding.viewModel = viewModel
         binding.save.setOnClickListener { view:View ->
             addShoes(view)
         }
@@ -52,8 +57,8 @@ class addShoe : Fragment() {
             binding.alertLabel2.visibility = View.INVISIBLE
             val shoeDetails = arrayOf(binding.nameValue.text.toString(), binding.sizeValue.text.toString(),
             binding.brandValue.text.toString(), binding.descriptionValue.text.toString())
-            view.findNavController().navigate(addShoeDirections.actionAddShoeToOutlet(shoeDetails[0], shoeDetails[1]
-            , shoeDetails[2], shoeDetails[3]))
+            binding.viewModel!!.insert()
+            view.findNavController().navigate(addShoeDirections.actionAddShoeToOutlet())
         }
     }
 }

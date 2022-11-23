@@ -10,11 +10,11 @@ import kotlin.math.log
 class OutletViewModel: ViewModel() {
 
     private var _shoesList = MutableLiveData<MutableList<Shoes>>()
+    val newShoe = Shoes()
     val shoesList: LiveData<MutableList<Shoes>>
         get() = _shoesList
 
     init {
-        Log.i("ViewModel", "init")
         insertInitialData()
     }
 
@@ -34,13 +34,26 @@ class OutletViewModel: ViewModel() {
         )
 
         for (i in 0 until shoesName.size){
-            val shoe = Shoes(shoesName[i],shoesCompany[i], shoesSize[i], shoesDescription[i])
+            val shoe = Shoes()
+            shoe.name = shoesName[i]
+            shoe.company = shoesCompany[i]
+            shoe.size = shoesSize[i]
+            shoe.description = shoesDescription[i]
+
             _shoesList.value!! += shoe
         }
     }
 
     fun insertShoe (name: String, size: String, brand: String, description: String){
-        val shoe = Shoes(name, size, brand, description)
+        val shoe = Shoes()
+        shoe.name = name
+        shoe.company = size
+        shoe.size = brand
+        shoe.description = description
         _shoesList.value!! += shoe
+    }
+
+    fun insert(){
+        _shoesList.value!! += newShoe
     }
 }

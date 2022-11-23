@@ -42,22 +42,6 @@
         <action
             android:id="@+id/action_outlet_to_addShoe"
             app:destination="@id/addShoe" />
-        <argument
-            android:name="shoeName"
-            app:argType="string"
-            app:nullable="true" />
-        <argument
-            android:name="shoeSize"
-            app:argType="string"
-            app:nullable="true" />
-        <argument
-            android:name="shoeBrand"
-            app:argType="string"
-            app:nullable="true" />
-        <argument
-            android:name="shoeDescription"
-            app:argType="string"
-            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/addShoe"

@@ -14,6 +14,7 @@ import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -52,11 +53,6 @@ class Outlet : Fragment() {
         viewModel = ViewModelProvider(requireActivity())[OutletViewModel::class.java]
         outletView = binding.shoesData
         binding.lifecycleOwner = viewLifecycleOwner
-
-        val args = OutletArgs.fromBundle(requireArguments())
-        if (args.shoeName != null){
-            viewModel.insertShoe(args.shoeName!!, args.shoeSize!!, args.shoeBrand!!, args.shoeDescription!!)
-        }
 
         viewModel.shoesList.observe(viewLifecycleOwner) { shoes ->
             for (i in 0 until shoes.size) {
@@ -218,3 +214,4 @@ class Outlet : Fragment() {
     }
 
 }
+
